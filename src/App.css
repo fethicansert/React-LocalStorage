@@ -1,38 +1,89 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:ital,wght@0,400;0,600;0,700;1,500;1,600&display=swap');
+
+.App{
+  width: 60%;
+  min-width: 400px;
+  max-width: 600px;
+  margin:  0 auto;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  color: rgb(225, 225, 225);
+  padding: 1rem;
+  background: #482B46 ;
   min-height: 100vh;
+}
+
+
+header{
+  background: #71436F;
+  padding: 2rem 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+header h1{
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 10px;
+}
+
+header p{
+  font-style: italic;
+  font-size: .9rem;
+}
+
+header span{
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 1rem;
+}
+
+main{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: #4E2F4E ;
+  padding: 1rem;
+}
+
+button{
+  padding: .7rem 0;
+  border: none;
+  background: #71436F;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button:hover{
+  opacity: .8;
+}
+
+.book-list{
+  list-style: none;
+  padding: 0;
+}
+
+.book-list li{
+  display: flex;
+  flex-direction: column;
+  background: #71436F;
+  text-align: start;
+  padding: 1rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.book-title{
+  font-size: 2rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.book-author{
+  font-size: 1.3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.book-number{
+  position: absolute;
+  right: 0;
+  margin-right: 1rem;
+  font-weight: 600;
 }

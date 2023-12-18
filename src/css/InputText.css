@@ -1,0 +1,18 @@
+.input-text{
+    text-indent: 10px;
+    margin-bottom: 1rem;
+    padding: .7rem 0;
+    background: #40233D ;
+    border: none;
+    color: white;
+}
+
+.input-text::placeholder{
+    color: rgb(205, 204, 204);
+    text-transform: capitalize;
+}
+
+.input-text:focus{
+    border: none;
+    outline: 2px solid #71436F;
+}
