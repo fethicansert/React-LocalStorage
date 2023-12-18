@@ -70,6 +70,15 @@ button:hover{
   border-radius: 2px;
   margin-bottom: 1rem;
   position: relative;
+  cursor: pointer;
+}
+
+.book-list li:hover{
+  opacity: .85;
+}
+
+.book-list li:hover span{
+  text-decoration:line-through;
 }
 
 .book-title{

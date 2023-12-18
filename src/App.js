@@ -4,9 +4,10 @@ import { useEffect, useState  } from 'react';
 import InputText from './components/InputText';
 import {v4 as uuidv4} from 'uuid'
 
-//Oncelikli amac statin doldurulmasi ve onun uzerinden calisilmasi ne zaman ki state degisir useEffect kullanacak state te tutulan bilgiler islenir
-//Datalari state yukle state i kullanarak uygulmada degisim yap ve state ile disayi bilgilendir
-//Her sey state kontorlunda olmali ki degisim yapildiginda re render yapabilelim 
+
+
+
+
 function App() {
   const [input, setInput] = useState({bookTitle: '', author: ''});
   const [books, setBook] = useState(()=>{
@@ -20,12 +21,23 @@ function App() {
 
   const bookElements = books.length > 0 ? books.map((bookEl,index) => {
     return (
-      <li key={bookEl.id}>
+      <li onClick={ e => deleteBook(e, bookEl.id) } key={bookEl.id}>
         <span className='book-title'>{ bookEl.bookTitle }</span>
         <span className='book-author'>{ bookEl.author }</span>
         <span className='book-number'>{ index + 1 }</span>
       </li>);
   }): null;
+
+  function deleteBook(e,key){
+    const deleteBookID = key;
+    
+    
+ 
+    // setBook(prevState => {
+    //     const newState = prevState.filter(e => e.id)
+    // });
+    
+  }
 
   function handleInput(e){
     const {name, value} = e.target;
