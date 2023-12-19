@@ -1,18 +1,21 @@
 import './App.css';
-import Split from 'react-split'
 import { useEffect, useState  } from 'react';
 import InputText from './components/InputText';
 import {v4 as uuidv4} from 'uuid'
 
+//*****methods checking if obj key in the object****
 
-
+// console.log(localStorage.hasOwnProperty('books')); //TRUE
+// console.log('books' in localStorage);              //TRUE
+// console.log(localStorage.books !== undefined);     //TRUE
+// console.log(localStorage?.books);                  // Bu arkadas eger yoksa undefined varsa istenileni veriyor
 
 
 function App() {
   const [input, setInput] = useState({bookTitle: '', author: ''});
   const [books, setBook] = useState(()=>{
-    const localData = localStorage.getItem('books');
-    return localData ? JSON.parse(localData) : [];
+    const localData = localStorage.getItem('books'); // eger boyle bir obje yoksa null doner
+    return localData ? JSON.parse(localData) : []; // eger null degilse truthy bir deger doner localData JSON.parse yaparuz falsy bi deger emty array
   });
 
   useEffect(()=>{
@@ -21,23 +24,12 @@ function App() {
 
   const bookElements = books.length > 0 ? books.map((bookEl,index) => {
     return (
-      <li onClick={ e => deleteBook(e, bookEl.id) } key={bookEl.id}>
+      <li onClick={ e => deleteBook(bookEl.id) } key={bookEl.id}>
         <span className='book-title'>{ bookEl.bookTitle }</span>
         <span className='book-author'>{ bookEl.author }</span>
         <span className='book-number'>{ index + 1 }</span>
       </li>);
   }): null;
-
-  function deleteBook(e,key){
-    const deleteBookID = key;
-    
-    
- 
-    // setBook(prevState => {
-    //     const newState = prevState.filter(e => e.id)
-    // });
-    
-  }
 
   function handleInput(e){
     const {name, value} = e.target;
@@ -52,8 +44,12 @@ function App() {
     }
   }
 
+  function clearInput(){
+    setInput(prevState => ({bookTitle: '', author: ''}));
+  }
+
+
   function createBook(){
-    console.log(localStorage);
     if(checkInput()){
 
       const book = {
@@ -67,12 +63,22 @@ function App() {
         return [...prevState,book];
       });
 
+      clearInput();
+
     }else{
       alert("Fill all boxes please");
     }
   }
 
- 
+  function deleteBook(key){
+    if(window.confirm("Are you sure to delete this item ?")){
+      const deleteBookID = key;
+      setBook(prevState => {
+          const newState = prevState.filter(book => book.id !== deleteBookID);
+          return newState;
+      });
+    }
+  }
 
   return (
     <div className="App">
@@ -94,10 +100,4 @@ function App() {
 }
 
 
-
 export default App;
-
-///#482B46 outside
-//#71436F header
-// #40233D input
-// #4E2F4E input container

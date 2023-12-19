@@ -6,5 +6,4 @@ function InputText(props){
     );
 }
 
-
 export default InputText;
